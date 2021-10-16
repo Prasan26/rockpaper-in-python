@@ -1,32 +1,36 @@
-import random
-  
-# Print multiline instruction
-# performstring concatenation of string
-print("Winning Rules of the Rock paper scissor game as follows: \n"
-                                +"Rock vs paper->paper wins \n"
-                                + "Rock vs scissor->Rock wins \n"
-                                +"paper vs scissor->scissor wins \n")
-  
-while True:
-    print("Enter choice \n 1. Rock \n 2. paper \n 3. scissor \n")
-      
-    # take the input from user
-    choice = int(input("User turn: "))
-  
-    # OR is the short-circuit operator
-    # if any one of the condition is true
-    # then it return True value
-      
-    # looping until user enter invalid input
-    while choice > 3 or choice < 1:
-        choice = int(input("enter valid input: "))
-          
-  
-    # initialize value of choice_name variable
-    # corresponding to the choice value
-    if choice == 1:
-        choice_name = 'Rock'
-    elif choice == 2:
-        choice_name = 'paper'
+from random import randint
+
+#create a list of play options
+t = ["Rock", "Paper", "Scissors"]
+
+#assign a random play to the computer
+computer = t[randint(0,2)]
+
+#set player to False
+player = False
+
+while player == False:
+#set player to True
+    player = input("Rock, Paper, Scissors?")
+    if player == computer:
+        print("Tie!")
+    elif player == "Rock":
+        if computer == "Paper":
+            print("You lose!", computer, "covers", player)
+        else:
+            print("You win!", player, "smashes", computer)
+    elif player == "Paper":
+        if computer == "Scissors":
+            print("You lose!", computer, "cut", player)
+        else:
+            print("You win!", player, "covers", computer)
+    elif player == "Scissors":
+        if computer == "Rock":
+            print("You lose...", computer, "smashes", player)
+        else:
+            print("You win!", player, "cut", computer)
     else:
-        choice_name = 'scissor'
+        print("That's not a valid play. Check your spelling!")
+    #player was set to True, but we want it to be False so the loop continues
+    player = False
+    computer = t[randint(0,2)]
